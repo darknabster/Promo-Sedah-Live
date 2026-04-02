@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Promo Interface</title>
+    <style>
+        :root {
+            --bg-dark: #003d33;
+            --card-inner: #fff9f0;
+            --primary-orange: #ff9800;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin: 0;
+            padding: 20px 10px;
+            background-color: #e0e0e0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 420px;
+            width: 100%;
+            background: linear-gradient(145deg, #004d40, #002d26);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 
+                0 10px 20px rgba(0,0,0,0.3),
+                inset 0 2px 2px rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .headline {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .promo-main-box {
+            background: var(--card-inner);
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: 
+                inset 0 4px 8px rgba(0,0,0,0.1),
+                0 6px 12px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .promo-status-title {
+            color: #d84315;
+            font-size: 19px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .promo-status-subtitle {
+            color: #666;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* 3D Card Style */
+        .promo-list {
+            background-color: #fff6e6;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        /* --- Updated Card Component --- */
+        .promo-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05); /* very subtle shadow on the main card */
+            border: 1px solid rgba(224, 224, 224, 0.5); /* light border */
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* vertical alignment */
+        }
+
+        .promo-card-content {
+            flex: 1; /* content takes up available space */
+            padding-right: 12px; /* space between text and box */
+        }
+
+        .promo-card-title-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .promo-card-icon {
+            font-size: 18px;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .promo-card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d84315; /* dark orange */
+        }
+
+        .promo-card-description {
+            font-size: 13px;
+            color: #616161;
+            line-height: 1.4;
+        }
+
+        /* --- Updated Reward Box (One Line) --- */
+        .reward-box-container {
+            flex-shrink: 0; /* do not let it shrink */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .reward-box {
+            background-color: #ffffff;
+            border: 1px solid #8BC34A;
+            border-radius: 8px;
+            padding: 6px 12px;
+            box-shadow: 3px 3px 2px #4CAF50, 0 1px 1px #8BC34A;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .reward-box-text {
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            gap: 4px; /* small space between currency and amount */
+            align-items: center;
+        }
+
+        .treasure-prize {
+            color: #388E3C; /* dark green */
+        }
+
+        .roulette-prize {
+            color: #2196F3; /* blue */
+        }
+
+        .agent-prize {
+            color: #FF9800; /* orange */
+        }
+
+        @media (max-width: 375px) {
+            .reward-box-text {
+                font-size: 13px;
+            }
+        }
+        .card-treasure { 
+            background: linear-gradient(180deg, #d8ffda 0%, #d8e7c7 100%);
+            box-shadow: 0 4px 0 #94db97, 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-roulette { 
+            background: linear-gradient(180deg, #cffaff 0%, #a5d7ed 100%);
+            box-shadow: 0 4px 0 #43acff, 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-agent { 
+            background: linear-gradient(180deg, #fffcdc 0%, #fff9c1 100%);
+            box-shadow: 0 4px 0 #dfd685, 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo-card-title {
+            font-weight: 800;
+            font-size: 15px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .reward-tag {
+            background: #ffffff;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 12px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 2px 0 rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        /* 3D Social Buttons */
+        .social-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-button {
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.1s;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-fb {
+            background: #1877f2;
+            box-shadow: 0 5px 0 #0d47a1;
+        }
+
+        .btn-tg {
+            background: #24A1DE;
+            box-shadow: 0 5px 0 #0077b5;
+        }
+
+        .social-button:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        }
+
+        /* The Main 3D Floating Button */
+        .footer-action {
+            margin-top: 25px;
+        }
+
+        .primary-btn {
+            display: block;
+            background: linear-gradient(to bottom, #ffb74d, #f57c00);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-decoration: none;
+            font-size: 16px;
+            box-shadow: 
+                0 8px 0 #b35200, 
+                0 15px 25px rgba(0,0,0,0.2);
+            position: relative;
+            transition: all 0.1s;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .primary-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #b35200;
+            animation: none;
+        }
+
+        .disclaimer {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            margin-top: 15px;
+        }
+
+        .dashed-box {
+            border: 2px dashed #90caf9;
+            background: rgba(227, 242, 253, 0.7);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .dashed-box-title {
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        /* 3D Step List Styling */
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .step-number-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(to bottom, #42a5f5, #1e88e5);
+            color: white;
+            font-size: 11px;
+            font-weight: 900;
+            border-radius: 3px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            /* The "3D Emoticon" look */
+            box-shadow: 0 3px 0 #1565c0, 0 4px 5px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+
+        .step-text b {
+            font-weight: 800;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="headline">⚡️ MENANG BANYAK HARI INI ⚡️</div>
+    
+    <div class="promo-main-box">
+        <div class="promo-status-title">🔥 PROMO SUDAH LIVE 🔥</div>
+        <div class="promo-status-subtitle">Pilih reward Anda dan langsung klaim selagi masih aktif ✅</div>
+
+        <div class="promo-card card-treasure">
+            <div class="promo-card-content">
+                <div class="promo-card-title-row">
+                    <span class="promo-card-icon">🎁</span>
+                    <span class="promo-card-title">Kotak Harta Karun</span>
+                </div>
+                <div class="promo-card-description">
+                    Buka kotak dan dapatkan hadiah instan - setiap hari ada kesempatan!
+                </div>
+            </div>
+            
+            <div class="reward-box-container">
+                <div class="reward-box">
+                    <div class="reward-box-text treasure-prize">
+                        <span>Rp</span>
+                        <span>50K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-card card-roulette">
+            <div class="promo-card-content">
+                <div class="promo-card-title-row">
+                    <span class="promo-card-icon">🎡</span>
+                    <span class="promo-card-title">Putaran Roulette</span>
+                </div>
+                <div class="promo-card-description">
+                    Putar sekarang - hadia lebih besar, keseruan lebih maksimal!
+                </div>
+            </div>
+            
+            <div class="reward-box-container">
+                <div class="reward-box">
+                    <div class="reward-box-text roulette-prize">
+                        <span>Rp</span>
+                        <span>100K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-card card-agent">
+            <div class="promo-card-content">
+                <div class="promo-card-title-row">
+                    <span class="promo-card-icon">💰</span>
+                    <span class="promo-card-title">Komisi Agen</span>
+                </div>
+                <div class="promo-card-description">
+                    Undang teman dan dapatkan komisi saat mereka bermain - penghasilan nyata
+                </div>
+            </div>
+            
+            <div class="reward-box-container">
+                <div class="reward-box">
+                    <div class="reward-box-text agent-prize">
+                        <span>Hingga</span>
+                        <span>5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashed-box">
+            <div style="font-weight: 800; color: #0d47a1; margin-bottom: 10px; font-size: 14px;">🚀 BAGIKAN SEKARANG:</div>
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-number-icon">1</div>
+                    <div class="step-text">Klik tombol di bawah</div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number-icon">2</div>
+                    <div class="step-text">Bagikan ke <b>Facebook</b> atau <b>Telegram</b></div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number-icon">3</div>
+                    <div class="step-text">Semakin banyak yang bermain, semakin besar penghasilan Anda 🥳</div>
+                </div>
+            </div>
+            <div class="social-buttons">
+                <a href="#" class="social-button btn-fb">FACEBOOK</a>
+                <a href="#" class="social-button btn-tg">TELEGRAM</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-action">
+        <a href="#" class="primary-btn">☝️ GABUNG & KLAIM SEKARANG!</a>
+        <div class="disclaimer">*Slot sangat terbatas. Klaim selagi tombol masih aktif.</div>
+    </div>
+</div>
+
+</body>
+</html>
