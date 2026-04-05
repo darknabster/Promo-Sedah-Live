@@ -186,16 +186,19 @@
         .card-treasure { 
             background: linear-gradient(180deg, #d8ffda 0%, #d8e7c7 100%);
             box-shadow: 0 4px 0 #94db97, 0 6px 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
         }
 
         .card-roulette { 
             background: linear-gradient(180deg, #cffaff 0%, #a5d7ed 100%);
             box-shadow: 0 4px 0 #43acff, 0 6px 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
         }
 
         .card-agent { 
             background: linear-gradient(180deg, #fffcdc 0%, #fff9c1 100%);
             box-shadow: 0 4px 0 #dfd685, 0 6px 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
         }
 
         .promo-card-title {
@@ -234,6 +237,10 @@
             transition: all 0.1s;
             border: none;
             font-size: 14px;
+        }
+        .img-banner1 img, .img-banner2 img, .img-banner3 img {
+            width: 100%;
+            margin-top: 10px;
         }
 
         .btn-fb {
@@ -349,6 +356,9 @@
             font-weight: 800;
             color: #000;
         }
+        .header-row1, .header-row2, .header-row3 {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -360,99 +370,115 @@
         <div class="promo-status-title">🔥 PROMO SUDAH LIVE 🔥</div>
         <div class="promo-status-subtitle">Pilih reward Anda dan langsung klaim selagi masih aktif ✅</div>
 
-        <div class="promo-card card-treasure">
-            <div class="promo-card-content">
-                <div class="promo-card-title-row">
-                    <span class="promo-card-icon">🎁</span>
-                    <span class="promo-card-title">Kotak Harta Karun</span>
-                </div>
-                <div class="promo-card-description">
-                    Buka kotak dan dapatkan hadiah instan - setiap hari ada kesempatan!
-                </div>
-            </div>
-            
-            <div class="reward-box-container">
-                <div class="reward-box treasure-box">
-                    <div class="reward-box-text treasure-prize">
-                        <span>Rp</span>
-                        <span>50K</span>
+            <div class="promo-card card-treasure">
+                <div class="header-row1">
+                    <div class="promo-card-content">
+                        <div class="promo-card-title-row">
+                            <span class="promo-card-icon">🎁</span>
+                            <span class="promo-card-title">Kotak Harta Karun</span>
+                        </div>
+                        <div class="promo-card-description">
+                            Buka kotak dan dapatkan hadiah instan - setiap hari ada kesempatan!
+                        </div>
+                    </div>
+                    
+                    <div class="reward-box-container">
+                        <div class="reward-box treasure-box">
+                            <div class="reward-box-text treasure-prize">
+                                <span>Rp</span>
+                                <span>50K</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="img-banner1">
+                    <img src="./images/banner1.gif" alt="treasure-box">
+                </div>
             </div>
-        </div>
 
-        <div class="promo-card card-roulette">
-            <div class="promo-card-content">
-                <div class="promo-card-title-row">
-                    <span class="promo-card-icon">🎡</span>
-                    <span class="promo-card-title">Putaran Roulette</span>
-                </div>
-                <div class="promo-card-description">
-                    Putar sekarang - hadia lebih besar, keseruan lebih maksimal!
-                </div>
-            </div>
-            
-            <div class="reward-box-container">
-                <div class="reward-box roulette-box">
-                    <div class="reward-box-text roulette-prize">
-                        <span>Rp</span>
-                        <span>100K</span>
+            <div class="promo-card card-roulette">
+                <div class="header-row2">
+                    <div class="promo-card-content">
+                        <div class="promo-card-title-row">
+                            <span class="promo-card-icon">🎡</span>
+                            <span class="promo-card-title">Putaran Roulette</span>
+                        </div>
+                        <div class="promo-card-description">
+                            Putar sekarang - hadia lebih besar, keseruan lebih maksimal!
+                        </div>
+                    </div>
+                    
+                    <div class="reward-box-container">
+                        <div class="reward-box roulette-box">
+                            <div class="reward-box-text roulette-prize">
+                                <span>Rp</span>
+                                <span>100K</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="img-banner2">
+                    <img src="./images/banner2.png" alt="treasure-box">
+                </div>
             </div>
-        </div>
 
-        <div class="promo-card card-agent">
-            <div class="promo-card-content">
-                <div class="promo-card-title-row">
-                    <span class="promo-card-icon">💰</span>
-                    <span class="promo-card-title">Komisi Agen</span>
-                </div>
-                <div class="promo-card-description">
-                    Undang teman dan dapatkan komisi saat mereka bermain - penghasilan nyata
-                </div>
-            </div>
-            
-            <div class="reward-box-container">
-                <div class="reward-box agent-box">
-                    <div class="reward-box-text agent-prize">
-                        <span>Hingga</span>
-                        <span>5%</span>
+            <div class="promo-card card-agent">
+                <div class="header-row3">
+                    <div class="promo-card-content">
+                        <div class="promo-card-title-row">
+                            <span class="promo-card-icon">💰</span>
+                            <span class="promo-card-title">Komisi Agen</span>
+                        </div>
+                        <div class="promo-card-description">
+                            Undang teman dan dapatkan komisi saat mereka bermain - penghasilan nyata
+                        </div>
+                    </div>
+                    
+                    <div class="reward-box-container">
+                        <div class="reward-box agent-box">
+                            <div class="reward-box-text agent-prize">
+                                <span>Hingga</span>
+                                <span>5%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="img-banner3">
+                    <img src="./images/banner3.png" alt="treasure-box">
+                </div>
             </div>
-        </div>
         
-        <div class="dashed-box">
-            <div style="font-weight: 800; color: #0d47a1; margin-bottom: 10px; font-size: 14px;">🚀 BAGIKAN SEKARANG:</div>
-            <div class="step-list">
-                <div class="step-item">
-                    <div class="step-number-icon">1</div>
-                    <div class="step-text">Klik tombol di bawah</div>
-                </div>
+            <div class="dashed-box">
+                <div style="font-weight: 800; color: #0d47a1; margin-bottom: 10px; font-size: 14px;">🚀 BAGIKAN SEKARANG:</div>
+                <div class="step-list">
+                    <div class="step-item">
+                        <div class="step-number-icon">1</div>
+                        <div class="step-text">Klik tombol di bawah</div>
+                    </div>
 
-                <div class="step-item">
-                    <div class="step-number-icon">2</div>
-                    <div class="step-text">Bagikan ke <b>Facebook</b> atau <b>Telegram</b></div>
-                </div>
+                    <div class="step-item">
+                        <div class="step-number-icon">2</div>
+                        <div class="step-text">Bagikan ke <b>Facebook</b> atau <b>Telegram</b></div>
+                    </div>
 
-                <div class="step-item">
-                    <div class="step-number-icon">3</div>
-                    <div class="step-text">Semakin banyak yang bermain, semakin besar penghasilan Anda 🥳</div>
+                    <div class="step-item">
+                        <div class="step-number-icon">3</div>
+                        <div class="step-text">Semakin banyak yang bermain, semakin besar penghasilan Anda 🥳</div>
+                    </div>
                 </div>
-            </div>
-            <div class="social-buttons">
-                <a href="#" class="social-button btn-fb">FACEBOOK</a>
-                <a href="#" class="social-button btn-tg">TELEGRAM</a>
+                <div class="social-buttons">
+                    <a href="#" class="social-button btn-fb">FACEBOOK</a>
+                    <a href="#" class="social-button btn-tg">TELEGRAM</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="footer-action">
-        <a href="#" class="primary-btn">☝️ GABUNG & KLAIM SEKARANG!</a>
-        <div class="disclaimer">*Slot sangat terbatas. Klaim selagi tombol masih aktif.</div>
+        <div class="footer-action">
+            <a href="#" class="primary-btn">☝️ GABUNG & KLAIM SEKARANG!</a>
+            <div class="disclaimer">*Slot sangat terbatas. Klaim selagi tombol masih aktif.</div>
+        </div>
     </div>
-</div>
 
 </body>
 </html>
